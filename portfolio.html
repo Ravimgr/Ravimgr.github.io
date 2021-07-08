@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head><title>My Portfolio</title>
+        <style>.main{
+            text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="main">
+     
+    <img  
+        height="100"
+        alt="profile" 
+        width="100" 
+        src="https://avatars.githubusercontent.com/u/62999716?v=4"
+        id="myphoto" >
+        <h3 id="fullname"> </h3>
+        <p id ="bio"> </p>
+        <p>Check me on<a id="link">Github</a></p>
+    </div>
+    <script>
+        fetch("https://api.github.com/users/Ravimgr")
+        .then(Response=>Response.json())
+        .then(function(data){
+            console.log(data)
+            document.getElementById('myphoto').src=data['avatar_url']
+            document.getElementById('fullname').textContent=data['name']
+            document.getElementById('bio').textContent=data['bio']
+            document.getElementById('link').href=data['html_url']
+        })
+
+
+    </script>
+    </body>
+</html>
