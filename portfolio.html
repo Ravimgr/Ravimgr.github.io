@@ -1,23 +1,63 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
     <head><title>My Portfolio</title>
+        <link href="./style.css" rel="stylesheet">
         <style>.main{
             text-align: center;
+        }
+        body{
+            background-color: powderblue;
         }
         </style>
     </head>
     <body>
     <div class="main">
-     
-    <img  
-        height="100"
-        alt="profile" 
-        width="100" 
-        src="https://avatars.githubusercontent.com/u/62999716?v=4"
-        id="myphoto" >
-        <h3 id="fullname"> </h3>
-        <p id ="bio"> </p>
-        <p>Check me on<a id="link">Github</a></p>
+
+        <header class="white-text-container">
+            <div class="text-center">
+              <h1>I am <a id="fullname"></a></h1>
+              <p>Web designer</p>
+            </div>
+        </header>
+          <div class="card" style="background-color: white;">
+
+          <div class="row">  
+            <div class="column" style="text-align:left;">
+                <h3>About Me</h3>
+                <img id="myphoto" height="100" width="100" alt="">
+            </div>
+            <div class="column">
+                <p id ="bio" style="text-align: center;"> </p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem unde aperiam labore, a veniam repellendus, delectus saepe nostrum cum architecto, placeat optio. Atque reprehenderit obcaecati sequi tempore doloremque dolorum enim!</p>
+            </div>
+          </div>
+          </div>
+          <h1 style="text-align:center;"> My Projects</h1>
+         
+          <!--For Repos start here--> 
+          <div class="card" style="background-color: white;">
+            <h3 id="head">Ravimgr</h3>
+            <p>Config files for my Github profile</p>
+            <p>click here <a id="url">Repo Link</a></p>
+        </div>
+        <div class="card" style="background-color: white;">
+            <h3 id="head">RoomFinder</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit veritatis officiis recusandae quae qui rem temporibus quam quaerat mollitia eum alias repudiandae ducimus impedit amet, optio a totam. Dignissimos, consectetur!</p>
+            <p>click here <a id="url1">Repo Link</a></p>
+        </div>
+        <div class="card" style="background-color: white;">
+            <h3 id="head">Ravimgr.github.io</h3>
+            <p>HTML</p>
+            <p>click here <a id="url2"> Repo Link</a></p>
+        </div>
+          
+        
+          
+
+        
+
+
+        <p>Check me on <a id="link"> Github</a></p>
     </div>
     <script>
         fetch("https://api.github.com/users/Ravimgr")
@@ -28,9 +68,19 @@
             document.getElementById('fullname').textContent=data['name']
             document.getElementById('bio').textContent=data['bio']
             document.getElementById('link').href=data['html_url']
+
         })
 
+        fetch("https://api.github.com/users/Ravimgr/repos")
+        .then(Response=>Response.json())
+        .then(function(d1ata){
+            console.log(d1ata)
+            document.getElementById('url').href=d1ata['git_url']
+            document.getElementById('url1').href=d1ata['git_url']
+            document.getElementById('url2').href=d1ata['git_url']
 
+
+        })
     </script>
     </body>
 </html>
