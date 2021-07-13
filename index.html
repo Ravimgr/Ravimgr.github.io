@@ -36,26 +36,20 @@
          
           <!--For Repos start here--> 
           <div class="card" style="background-color: white;">
-            <h3 id="head">Ravimgr</h3>
-            <p>Config files for my Github profile</p>
-            <p>click here <a id="url">Repo Link</a></p>
-        </div>
-        <div class="card" style="background-color: white;">
-            <h3 id="head">RoomFinder</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit veritatis officiis recusandae quae qui rem temporibus quam quaerat mollitia eum alias repudiandae ducimus impedit amet, optio a totam. Dignissimos, consectetur!</p>
+            <h3 Class="projectName"> </h3>
+            <p class="descp"></p>
             <p>click here <a id="url1">Repo Link</a></p>
         </div>
         <div class="card" style="background-color: white;">
-            <h3 id="head">Ravimgr.github.io</h3>
-            <p>HTML</p>
-            <p>click here <a id="url2"> Repo Link</a></p>
+            <h3 class="SecondProj"> </h3>
+            <p class="descp1"></p>
+            <p>click here <a id="url1">Repo Link</a></p>
         </div>
-          
-        
-          
-
-        
-
+        <div class="card" style="background-color: white;">
+            <h3 class="thirdProj"> </h3>
+            <p class="descp2"></p>
+            <p>click here <a id="url1"> Repo Link</a></p>
+        </div>
 
         <p>Check me on <a id="link"> Github</a></p>
     </div>
@@ -75,11 +69,14 @@
         .then(Response=>Response.json())
         .then(function(d1ata){
             console.log(d1ata)
-            document.getElementById('url').href=d1ata['git_url']
-            document.getElementById('url1').href=d1ata['git_url']
-            document.getElementById('url2').href=d1ata['git_url']
-
-
+            document.querySelector(".projectName").textContent=d1ata[0].name
+            document.querySelector(".descp").textContent=d1ata[0].description
+            document.querySelector(".SecondProj").textContent=d1ata[1].name
+            document.querySelector(".descp1").textContent=d1ata[1].description
+            document.querySelector(".thirdProj").textContent=d1ata[2].name
+            document.querySelector(".descp2").textContent=d1ata[2].description
+            document.querySelector(".url1").href=d1ata[2].html_url
+            
         })
     </script>
     </body>
